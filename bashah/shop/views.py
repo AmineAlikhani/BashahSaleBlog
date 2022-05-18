@@ -8,8 +8,8 @@ def cat_view(request, slug=None):
 	products =  Product.objects.all()
 	context ={'categories':categories, 'products':products,}    
 	return render(request, 'shop/cat_view.html', context) 
-
-def product_view(request, slug):
+	
+def detail(request, slug):
 	product = get_object_or_404(Product, slug=slug)
-#	context = {'product':product}
-	return HttpResponse(product)
+	context = {'product':product}
+	return render(request, 'shop/detail.html', context) 

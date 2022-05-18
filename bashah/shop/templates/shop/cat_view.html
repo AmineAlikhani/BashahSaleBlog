@@ -13,28 +13,17 @@
 	
 	{% for cat in categories %}
     <ul>
-        <p> <li> <a href= "{{ category.get_url }}">  {{cat.id}}) {{cat.name}} </a> </li></p>  
+        <p> <li> {{cat.id}}) {{cat.name}} </li></p>  
         <ul>
         	{% for pro in products %}
         	{% if pro.category == cat %}
-        	<p><li> <a href= "{{ product.get_url }}">{{pro.name}} </a> </li></p>
+        	<p><li> <a href= "{{pro.get_url}}"> {{pro.name}} </a> </li></p>        	
         	{% endif %}
         	{% endfor %}
         </ul>   	
     </ul>
     {% endfor %}  
-    
           
-<!--- 
-       <div class="btn-group">
-            <a href="{{ category.get_absolut_url }}" class="btn btn-danger">{{ category.name }}</a>
-            <button type="button">
-            </button>
-            <ul>
-                {% for sub in category.sub_categories.all %}
-                    <li><a class="dropdown-item" href="{{ sub.get_absolut_url }}">{{ sub.name }}</a></li>
-                {% endfor %}
---->
 {% endblock %}
 </body>
 </html>
