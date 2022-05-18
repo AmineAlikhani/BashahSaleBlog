@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Bashah Online Shop{% endblock %}</title>
+</head>
+
+<body>
+{% block content %}
+	<p> Select a category </p>
+	
+	{% for cat in categories %}
+    <ul>
+        <p> <li> <a href= "{{ category.get_url }}"> {{cat.name}} </a> </li> </p>
+    </ul>
+        {% endfor %}  
+          
+<!--- 
+       <div class="btn-group">
+            <a href="{{ category.get_absolut_url }}" class="btn btn-danger">{{ category.name }}</a>
+            <button type="button">
+            </button>
+            <ul>
+                {% for sub in category.sub_categories.all %}
+                    <li><a class="dropdown-item" href="{{ sub.get_absolut_url }}">{{ sub.name }}</a></li>
+                {% endfor %}
+--->
+{% endblock %}
+</body>
+</html>
