@@ -4,9 +4,9 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True,)
     is_sub = models.BooleanField(default=False)
-    status = models.BooleanField(default=False)
+    is_available = models.BooleanField(default=False)
     sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_categories', null=True,
                                      blank=True)                                      
     def get_url(self):
@@ -16,18 +16,17 @@ class Category(models.Model):
         return self.name        
                                             
 class Product(models.Model):
-#related name is refering to??
-    category = models.ManyToManyField(Category, related_name='products')
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
-    detail = models.TextField()
-    price = models.IntegerField()
-    status = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+	category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+	name = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=200,)
+	detail = models.TextField()
+	price = models.IntegerField()
+	is_available = models.BooleanField(default=False)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name
 
-    def get_url(self):
-        return reverse('shop:product_detail', args={self.slug, })
+	def get_url(self):
+		return reverse('shop:product_detail', args={self.slug, })

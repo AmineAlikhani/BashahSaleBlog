@@ -13,9 +13,17 @@
 	
 	{% for cat in categories %}
     <ul>
-        <p> <li> <a href= "{{ category.get_url }}"> {{cat.name}} </a> </li> </p>
+        <p> <li> <a href= "{{ category.get_url }}">  {{cat.id}}) {{cat.name}} </a> </li></p>  
+        <ul>
+        	{% for pro in products %}
+        	{% if pro.category == cat %}
+        	<p><li> <a href= "{{ product.get_url }}">{{pro.name}} </a> </li></p>
+        	{% endif %}
+        	{% endfor %}
+        </ul>   	
     </ul>
-        {% endfor %}  
+    {% endfor %}  
+    
           
 <!--- 
        <div class="btn-group">

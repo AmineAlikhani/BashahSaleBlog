@@ -4,8 +4,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 def cat_view(request, slug=None):
-	categories = Category.objects.filter(is_sub=False, status=True)
-	context ={'categories':categories}    
+	categories = Category.objects.filter(is_sub=False, is_available=True)
+	products =  Product.objects.all()
+	context ={'categories':categories, 'products':products,}    
 	return render(request, 'shop/cat_view.html', context) 
 
 def product_view(request, slug):
