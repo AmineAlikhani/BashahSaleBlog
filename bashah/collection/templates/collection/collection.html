@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    collection
+{% endblock %}
+
+{% block title-head %}
+	Here is your collection
+
+{% endblock %}
+
+{% block content %}
+	{% for c in collection %}
+		{% for p in product %}
+			{% if c.product_ids == p.id %}
+				<p> {{p.name}} </p>
+	    		<p>{{ p.detail}} </p>
+    			<p>{{ p.price }}</p>
+			{% endif %}
+		{% endfor %}	
+	{% endfor %}	
+{% endblock %}
