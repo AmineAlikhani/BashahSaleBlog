@@ -34,7 +34,9 @@ def register(request):
         if form.is_valid():
             data = form.cleaned_data
             user = User.objects.create_user(data['email'], data['full_name'], data['phone_number'], data['password'])
+            #this shit won't happen
             login(request, user)
+            #but this will!
             messages.success(request, 'you registered successfully', 'success')
             return redirect('shop:home')
     else:

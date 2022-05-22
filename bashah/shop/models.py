@@ -30,3 +30,7 @@ class Product(models.Model):
 
 	def get_url(self):
 		return reverse('shop:detail', args={self.slug, })
+	def collect(self,Product_id):
+		collection.append(Product_id)
+		collection.super.save()
+		

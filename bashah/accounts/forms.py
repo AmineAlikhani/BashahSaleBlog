@@ -46,3 +46,10 @@ class UserRegistrationForm(forms.Form):
     full_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     phone_number = forms.CharField(max_length=12,widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password1'])
+        if commit:
+            user.save()
+        return user

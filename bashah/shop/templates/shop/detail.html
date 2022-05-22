@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <h3>{{ product.name }} </h3>
+    <p>{{ product.detail}} </p>
     <p>{{ product.price }} Dollar</p>
+    <form action="{% url 'collection:collect' product.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary" value="Collect!">
+    </form>
 {% endblock %}

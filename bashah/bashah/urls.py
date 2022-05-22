@@ -19,5 +19,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('shop/', include('shop.urls')),
-#    path('user/', include('user.urls')),
+    path('collect/', include('collection.urls', namespace='collect')),
 ]
